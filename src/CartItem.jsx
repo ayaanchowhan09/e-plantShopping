@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { removeItem, updateQuantity } from './CartSlice'
 
 function CartItem({ item }) {
@@ -43,6 +44,7 @@ function calculateTotalAmount(items = []) {
 
 export function CartSummary({ items }) {
     const navigate = useNavigate()
+    const [checkoutMessage, setCheckoutMessage] = useState('')
     const total = calculateTotalAmount(items)
 
     return (
@@ -52,10 +54,11 @@ export function CartSummary({ items }) {
                 <button className="secondary-button" type="button" onClick={() => navigate('/products')}>
                     Continue Shopping
                 </button>
-                <button className="checkout-button" type="button" onClick={() => window.alert('Checkout is ready for your order.')}>
+                <button className="checkout-button" type="button" onClick={() => setCheckoutMessage('Coming Soon')}>
                     Checkout
                 </button>
             </div>
+            {checkoutMessage && <p role="status">{checkoutMessage}</p>}
         </>
     )
 }

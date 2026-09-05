@@ -142,31 +142,30 @@ const products = [
   },
 ];
 
-function LandingPage() {
-  const navigate = useNavigate();
+function LandingPage({ onAddToCart }) {
   const [showProducts, setShowProducts] = useState(false);
 
   return (
-    <div className="landing-page background-image">
-      <div className="landing-content">
-        <h1>e-plantShopping</h1>
-        <p>
-          Welcome to e-plantShopping — your one-stop shop for beautiful
-          indoor plants.
-        </p>
+    <>
+      <div className="landing-page background-image">
+        <div className="landing-content">
+          <h1>e-plantShopping</h1>
+          <p>
+            Welcome to e-plantShopping — your one-stop shop for beautiful
+            indoor plants.
+          </p>
 
-        <button
-          type="button"
-          aria-pressed={showProducts}
-          onClick={() => {
-            setShowProducts(true);
-            navigate("/products");
-          }}
-        >
-          Get Started
-        </button>
+          <button
+            type="button"
+            aria-pressed={showProducts}
+            onClick={() => setShowProducts(true)}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
-    </div>
+      {showProducts && <ProductList products={products} onAddToCart={onAddToCart} />}
+    </>
   );
 }
 
@@ -233,7 +232,7 @@ function App() {
     <>
       <SiteHeader itemCount={itemCount} />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage onAddToCart={addToCart} />} />
         <Route
           path="/products"
           element={<ProductList products={products} onAddToCart={addToCart} />}
