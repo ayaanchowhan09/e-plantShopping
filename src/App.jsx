@@ -2,7 +2,7 @@ import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import AboutUs from "./AboutUs";
-import CartItem from "./CartItem";
+import CartItem, { CartSummary } from "./CartItem";
 import ProductList from "./ProductList";
 import { addItem } from "./CartSlice";
 import "./App.css";
@@ -171,9 +171,6 @@ function LandingPage() {
 }
 
 function CartPage({ cart }) {
-  const navigate = useNavigate();
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
   return (
     <main className="cart-page" aria-labelledby="cart-title">
       <h1 id="cart-title">Shopping Cart</h1>
@@ -191,15 +188,7 @@ function CartPage({ cart }) {
               <CartItem key={item.id} item={item} />
             ))}
           </div>
-          <p className="cart-total">Total: ${total.toFixed(2)}</p>
-          <div className="cart-actions">
-            <button className="secondary-button" type="button" onClick={() => navigate("/products")}>
-              Continue Shopping
-            </button>
-            <button className="checkout-button" type="button" onClick={() => window.alert("Checkout is ready for your order.")}>
-              Checkout
-            </button>
-          </div>
+          <CartSummary items={cart} />
         </div>
       )}
     </main>

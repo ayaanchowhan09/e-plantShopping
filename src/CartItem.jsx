@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { removeItem, updateQuantity } from './CartSlice'
 
 function CartItem({ item }) {
@@ -33,6 +34,29 @@ function CartItem({ item }) {
                 </button>
             </div>
         </article>
+    )
+}
+
+function calculateTotalAmount(items = []) {
+    return items.reduce((total, item) => total + item.price * item.quantity, 0)
+}
+
+export function CartSummary({ items }) {
+    const navigate = useNavigate()
+    const total = calculateTotalAmount(items)
+
+    return (
+        <>
+            <p className="cart-total">Total: ${total.toFixed(2)}</p>
+            <div className="cart-actions">
+                <button className="secondary-button" type="button" onClick={() => navigate('/products')}>
+                    Continue Shopping
+                </button>
+                <button className="checkout-button" type="button" onClick={() => window.alert('Checkout is ready for your order.')}>
+                    Checkout
+                </button>
+            </div>
+        </>
     )
 }
 
