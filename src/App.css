@@ -10,6 +10,12 @@
   padding: 48px 24px;
 }
 
+.background-image {
+  background-image:
+    linear-gradient(rgba(24, 43, 29, 0.5), rgba(24, 43, 29, 0.62)),
+    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85");
+}
+
 .landing-content {
   color: white;
   max-width: 700px;
@@ -257,6 +263,26 @@
   text-align: right;
 }
 
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.checkout-button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #26352b;
+  color: #fffaf1;
+  font-weight: 700;
+}
+
+.checkout-button:hover {
+  background: #3e5946;
+}
+
 .empty-cart {
   display: grid;
   justify-items: start;
@@ -371,5 +397,10 @@
     width: 78px;
     height: 78px;
     flex-basis: 78px;
+  }
+
+  .cart-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

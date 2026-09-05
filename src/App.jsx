@@ -24,6 +24,34 @@ const products = [
       "https://commons.wikimedia.org/wiki/Special:FilePath/Peace%20lily%20-%202.jpg?width=500",
   },
   {
+    id: 7,
+    name: "ZZ Plant",
+    price: 27.99,
+    category: "Indoor Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Zamioculcas%20zamiifolia.jpg?width=500",
+  },
+  {
+    id: 8,
+    name: "Rubber Plant",
+    price: 32.99,
+    category: "Indoor Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ficus%20elastica%20-%20La%20Palma%2003.jpg?width=500",
+  },
+  {
+    id: 9,
+    name: "Spider Plant",
+    price: 18.99,
+    category: "Indoor Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chlorophytum%20comosum%20%28%20spider%20grass%29.jpg?width=500",
+  },
+  {
+    id: 10,
+    name: "Chinese Evergreen",
+    price: 22.99,
+    category: "Indoor Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Aglaonema%20commutatum.jpg?width=500",
+  },
+  {
     id: 3,
     name: "Aloe Vera",
     price: 16.99,
@@ -38,6 +66,34 @@ const products = [
     category: "Succulents",
     image:
       "https://commons.wikimedia.org/wiki/Special:FilePath/Echeveria%20agavoides%2003.jpg?width=500",
+  },
+  {
+    id: 11,
+    name: "Haworthia",
+    price: 15.99,
+    category: "Succulents",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/1%20Haworthia%20cooperi%20-%20Kirstenbosch.jpg?width=500",
+  },
+  {
+    id: 12,
+    name: "Jade Plant",
+    price: 21.99,
+    category: "Succulents",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Crassula%20ovata%202012.jpg?width=500",
+  },
+  {
+    id: 13,
+    name: "String of Pearls",
+    price: 17.99,
+    category: "Succulents",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Senecio%20rowleyanus.jpg?width=500",
+  },
+  {
+    id: 14,
+    name: "Burro's Tail",
+    price: 18.99,
+    category: "Succulents",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Burro%27s%20tail%20%28sedum%20morganianum%29.jpg?width=500",
   },
   {
     id: 5,
@@ -55,13 +111,41 @@ const products = [
     image:
       "https://commons.wikimedia.org/wiki/Special:FilePath/Bird%20of%20Paradise%20Plant.jpg?width=500",
   },
+  {
+    id: 15,
+    name: "Fiddle Leaf Fig",
+    price: 42.99,
+    category: "Tropical Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ficus%20lyrata.jpg?width=500",
+  },
+  {
+    id: 16,
+    name: "Calathea",
+    price: 29.99,
+    category: "Tropical Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Calathea%20orbifolia.jpg?width=500",
+  },
+  {
+    id: 17,
+    name: "Anthurium",
+    price: 34.99,
+    category: "Tropical Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Anthurium%20andraeanum.jpg?width=500",
+  },
+  {
+    id: 18,
+    name: "Parlor Palm",
+    price: 26.99,
+    category: "Tropical Plants",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chamaedorea%20elegans.jpg?width=500",
+  },
 ];
 
 function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="landing-page">
+    <div className="landing-page background-image">
       <div className="landing-content">
         <h1>Paradise Nursery</h1>
         <p>
@@ -78,6 +162,7 @@ function LandingPage() {
 }
 
 function CartPage({ cart }) {
+  const navigate = useNavigate();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -98,6 +183,14 @@ function CartPage({ cart }) {
             ))}
           </div>
           <p className="cart-total">Total: ${total.toFixed(2)}</p>
+          <div className="cart-actions">
+            <button className="secondary-button" type="button" onClick={() => navigate("/products")}>
+              Continue Shopping
+            </button>
+            <button className="checkout-button" type="button" onClick={() => window.alert("Checkout is ready for your order.")}>
+              Checkout
+            </button>
+          </div>
         </div>
       )}
     </main>

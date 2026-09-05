@@ -1,6 +1,6 @@
 function AboutUs() {
     return (
-        <main className="about-page" aria-labelledby="about-us-title">
+        <main className="about-page about-us-container" aria-labelledby="about-us-title">
             <div className="page-intro">
                 <p className="eyebrow">Our story</p>
                 <h1 id="about-us-title">Plants that make a place feel like home.</h1>
