@@ -5,7 +5,7 @@ function AboutUs() {
                 <p className="eyebrow">Our story</p>
                 <h1 id="about-us-title">Plants that make a place feel like home.</h1>
                 <p>
-                    Paradise Nursery is a simple online shop for bringing beautiful,
+                    e-plantShopping is a simple online shop for bringing beautiful,
                     easy-to-love plants into everyday spaces.
                 </p>
             </div>

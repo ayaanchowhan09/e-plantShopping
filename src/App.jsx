@@ -1,5 +1,6 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import AboutUs from "./AboutUs";
 import CartItem from "./CartItem";
 import ProductList from "./ProductList";
@@ -143,17 +144,25 @@ const products = [
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [showProducts, setShowProducts] = useState(false);
 
   return (
     <div className="landing-page background-image">
       <div className="landing-content">
-        <h1>Paradise Nursery</h1>
+        <h1>e-plantShopping</h1>
         <p>
-          Welcome to Paradise Nursery — your one-stop shop for beautiful
+          Welcome to e-plantShopping — your one-stop shop for beautiful
           indoor plants.
         </p>
 
-        <button onClick={() => navigate("/products")}>
+        <button
+          type="button"
+          aria-pressed={showProducts}
+          onClick={() => {
+            setShowProducts(true);
+            navigate("/products");
+          }}
+        >
           Get Started
         </button>
       </div>
@@ -211,7 +220,7 @@ function SiteHeader({ itemCount }) {
   return (
     <header className="site-header">
       <Link className="brand" to="/">
-        Paradise Nursery
+        e-plantShopping
       </Link>
       <nav aria-label="Main navigation">
         <Link to="/products">Plants</Link>
